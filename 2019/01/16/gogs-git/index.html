@@ -5,19 +5,19 @@
   
 
   
-  <title>Git 命令集 | Hexo</title>
+  <title>gogs git | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新建并切换到dev分支1git checkout -b dev">
+  <meta name="description" content="1$su git 切换后启动服务（在gogs目录下操作）1$nohup ./gogs web &amp;amp; 然后就ok了，关闭putty不影响服务 关于重启，需要先结束gogs进程，gogs默认端口位3000，查询端口进程1$lsof -i:3000 然后杀死进程1$kill -9 pid 例如查询到的pid为20833，则执行1$kill -9 20833">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 命令集">
-<meta property="og:url" content="http://yoursite.com/2019/01/16/Git-命令集/index.html">
+<meta property="og:title" content="gogs git">
+<meta property="og:url" content="http://yoursite.com/2019/01/16/gogs-git/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="新建并切换到dev分支1git checkout -b dev">
+<meta property="og:description" content="1$su git 切换后启动服务（在gogs目录下操作）1$nohup ./gogs web &amp;amp; 然后就ok了，关闭putty不影响服务 关于重启，需要先结束gogs进程，gogs默认端口位3000，查询端口进程1$lsof -i:3000 然后杀死进程1$kill -9 pid 例如查询到的pid为20833，则执行1$kill -9 20833">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-16T03:23:12.245Z">
+<meta property="og:updated_time" content="2019-01-16T03:32:27.869Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git 命令集">
-<meta name="twitter:description" content="新建并切换到dev分支1git checkout -b dev">
+<meta name="twitter:title" content="gogs git">
+<meta name="twitter:description" content="1$su git 切换后启动服务（在gogs目录下操作）1$nohup ./gogs web &amp;amp; 然后就ok了，关闭putty不影响服务 关于重启，需要先结束gogs进程，gogs默认端口位3000，查询端口进程1$lsof -i:3000 然后杀死进程1$kill -9 pid 例如查询到的pid为20833，则执行1$kill -9 20833">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Git-命令集" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-gogs-git" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/16/Git-命令集/" class="article-date">
-  <time datetime="2019-01-16T03:19:41.000Z" itemprop="datePublished">2019-01-16</time>
+    <a href="/2019/01/16/gogs-git/" class="article-date">
+  <time datetime="2019-01-16T03:30:51.000Z" itemprop="datePublished">2019-01-16</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Git 命令集
+      gogs git
     </h1>
   
 
@@ -86,11 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="新建并切换到dev分支"><a href="#新建并切换到dev分支" class="headerlink" title="新建并切换到dev分支"></a>新建并切换到dev分支</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$su</span> git</span><br></pre></td></tr></table></figure>
+<p>切换后启动服务（在gogs目录下操作）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$nohup</span> ./gogs web &amp;</span><br></pre></td></tr></table></figure></p>
+<p>然后就ok了，关闭putty不影响服务</p>
+<p>关于重启，需要先结束gogs进程，gogs默认端口位3000，查询端口进程<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$lsof</span> -i:3000</span><br></pre></td></tr></table></figure></p>
+<p>然后杀死进程<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$kill</span> -9 pid</span><br></pre></td></tr></table></figure></p>
+<p>例如查询到的pid为20833，则执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$kill</span> -9 20833</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/Git-命令集/" data-id="cjqymsbz60003ssq42ab3wouo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/gogs-git/" data-id="cjqymsbyt0000ssq48nvkw3hz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,19 +105,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/16/gogs-git/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          gogs git
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/15/hexo教程/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/16/Git-命令集/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo+Github</div>
+      <div class="article-nav-title">Git 命令集</div>
     </a>
   
 </nav>
