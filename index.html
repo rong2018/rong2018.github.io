@@ -62,6 +62,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/17/vue/" class="article-date">
+  <time datetime="2019-01-17T08:58:44.000Z" itemprop="datePublished">2019-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/17/vue/">vue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>$ref</li>
+</ul>
+<p>备注：<br>一般来讲，获取DOM元素，需document.querySelector（”.input1”）获取这个dom节点，然后在获取input1的值。</p>
+<p>但是用ref绑定之后，我们就不需要在获取dom节点了，直接在上面的input上绑定input1，然后$refs里面调用就行。</p>
+<p>然后在javascript里面这样调用：this.$refs.input1  这样就可以减少获取dom节点的消耗了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ref</span>=<span class="string">"input1"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">    methods:&#123;</span></span><br><span class="line"><span class="javascript">    add:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.$refs.input1.value =<span class="string">"22"</span>; <span class="comment">//this.$refs.input1  减少获取dom节点的消耗</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/17/vue/" data-id="cjr0e4zag0003fcq4gfdlolr3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-测试" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/17/js-测试/" class="article-date">
+  <time datetime="2019-01-17T07:08:49.000Z" itemprop="datePublished">2019-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/17/js-测试/">js 测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>???JSON????<blockquote>
+<p>1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=<span class="keyword">new</span> <span class="built_in">Array</span>();            <span class="comment">//????</span></span><br><span class="line">arr=[&#123;<span class="string">"goodsId"</span>:<span class="number">3</span>,<span class="string">"name"</span>:<span class="string">"??"</span>,<span class="string">"intro"</span>:<span class="string">"abc"</span>,<span class="string">"price"</span>:<span class="number">1</span>,<span class="string">"num"</span>:<span class="number">1</span>&#125;,&#123;<span class="string">"goodsId"</span>:<span class="number">4</span>,<span class="string">"name"</span>:<span class="string">"??"</span>,<span class="string">"intro"</span>:<span class="string">"abc"</span>,<span class="string">"price"</span>:<span class="number">1</span>,<span class="string">"num"</span>:<span class="number">1</span>&#125;];    </span><br><span class="line"><span class="keyword">var</span> json=<span class="built_in">JSON</span>.stringify(arr);   <span class="comment">//????json               </span></span><br><span class="line"><span class="keyword">var</span> str=json.substr(<span class="number">1</span>,json.length)   <span class="comment">//??????2???????</span></span><br><span class="line">str=str.substr(<span class="number">0</span>,str.length<span class="number">-1</span>); <span class="comment">//??????1??????????</span></span><br><span class="line"><span class="keyword">var</span> data=<span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">data=str;</span><br><span class="line"><span class="keyword">delete</span> data.name</span><br><span class="line"><span class="built_in">console</span>.log(json);</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>2?<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json=&#123; <span class="string">"firstName"</span>:<span class="string">"Bill"</span> , <span class="string">"lastName"</span>:<span class="string">"Gates"</span>&#125;,&#123; <span class="string">"firstName"</span>:<span class="string">"Bill"</span> , <span class="string">"lastName"</span>:<span class="string">"Gates"</span>&#125;;   <span class="comment">//??json</span></span><br><span class="line"><span class="keyword">delete</span> json[<span class="number">0</span>].firstName;    <span class="comment">//??json????</span></span><br><span class="line"><span class="built_in">console</span>.log(json);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>3?JS??json????????<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = [&#123;<span class="string">"name"</span>:<span class="string">"tank"</span>,<span class="string">"total"</span>:<span class="string">"100"</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"zhang"</span>,<span class="string">"total"</span>:<span class="string">"23"</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"hao"</span>,<span class="string">"total"</span>:<span class="string">"325"</span>&#125;];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> k=<span class="number">0</span>;k&lt;s.length;k++)&#123;</span><br><span class="line">    <span class="keyword">delete</span> s[k][<span class="string">"name"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(s);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>??<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = [&#123;<span class="string">"name"</span>:<span class="string">"tank"</span>,<span class="string">"total"</span>:<span class="string">"100"</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"zhang"</span>,<span class="string">"total"</span>:<span class="string">"23"</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"hao"</span>,<span class="string">"total"</span>:<span class="string">"325"</span>&#125;];</span><br><span class="line"><span class="keyword">for</span>(k <span class="keyword">in</span> s)&#123;</span><br><span class="line">    <span class="keyword">delete</span> s[k][<span class="string">"total"</span>];</span><br><span class="line">    <span class="keyword">delete</span> s[k][<span class="string">"name"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(s);</span><br></pre></td></tr></table></figure></p>
+<h1 id=""><a href="#" class="headerlink" title="?????"></a>?????</h1><p><a href="https://www.cnblogs.com/jiangyy/p/3531150.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiangyy/p/3531150.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/17/js-测试/" data-id="cjr0e4zaf0002fcq4ocmkn1gq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-收藏网站" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/16/收藏网站/" class="article-date">
@@ -110,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/收藏网站/" data-id="cjqz0w8s30003jgq4rl4fhwvi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/收藏网站/" data-id="cjr0e4zai0004fcq4kbapevyg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/Linux/" data-id="cjqz0w8ry0001jgq4r4nkjnl6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/Linux/" data-id="cjr0e4zac0001fcq4z4oenixe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/gogs-git/" data-id="cjqz0w8s10002jgq46i2h3wjy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/gogs-git/" data-id="cjr0e4zaj0005fcq4hu8i8w4t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,17 +316,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="新建并切换到dev分支"><a href="#新建并切换到dev分支" class="headerlink" title="新建并切换到dev分支"></a>新建并切换到dev分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b dev</span><br></pre></td></tr></table></figure>
-<h2 id="从命令行创建一个新的仓库"><a href="#从命令行创建一个新的仓库" class="headerlink" title="从命令行创建一个新的仓库"></a>从命令行创建一个新的仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$touch</span> README.md</span><br><span class="line"><span class="variable">$git</span> init</span><br><span class="line"><span class="variable">$git</span> add README.md</span><br><span class="line"><span class="variable">$git</span> commit -m <span class="string">"first commit"</span></span><br><span class="line"><span class="variable">$git</span> remote add origin 仓库地址</span><br><span class="line"><span class="variable">$git</span> push -u origin master</span><br></pre></td></tr></table></figure>
-<h2 id="从命令行推送已经创建的仓库"><a href="#从命令行推送已经创建的仓库" class="headerlink" title="从命令行推送已经创建的仓库"></a>从命令行推送已经创建的仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看最后一次提交记录的  –stat 简介<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> show  --<span class="built_in">stat</span></span><br></pre></td></tr></table></figure></li>
+        <ul>
+<li><p>新建并切换到dev分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从命令行创建一个新的仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$touch</span> README.md</span><br><span class="line"><span class="variable">$git</span> init</span><br><span class="line"><span class="variable">$git</span> add README.md</span><br><span class="line"><span class="variable">$git</span> commit -m <span class="string">"备注"</span></span><br><span class="line"><span class="variable">$git</span> remote add origin 仓库地址</span><br><span class="line"><span class="variable">$git</span> push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从命令行推送已经创建的仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看最后一次提交记录的  –stat 简介</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> show  --<span class="built_in">stat</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/Git-命令集/" data-id="cjqz0w8rr0000jgq4ks5e1eo9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/Git-命令集/" data-id="cjr0e4za10000fcq478tlpckv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/hexo教程/" data-id="cjqz0w8s40004jgq4nhgi2omk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/hexo教程/" data-id="cjr0e4zak0006fcq4fhuwblr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/hello-world/" data-id="cjqz0w8sc0005jgq4hvjko2zv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/hello-world/" data-id="cjr0e4zam0007fcq4b3ahhgcg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -366,6 +467,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/17/vue/">vue</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/17/js-测试/">js 测试</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/16/收藏网站/">收藏网站</a>
           </li>
         
@@ -375,14 +484,6 @@
         
           <li>
             <a href="/2019/01/16/gogs-git/">gogs git</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/16/Git-命令集/">Git 命令集</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/15/hexo教程/">Hexo+Github</a>
           </li>
         
       </ul>
