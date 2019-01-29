@@ -62,6 +62,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gitlab-教程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/28/gitlab-教程/" class="article-date">
+  <time datetime="2019-01-28T08:05:51.000Z" itemprop="datePublished">2019-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/28/gitlab-教程/">gitlab 教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="备份设置："><a href="#备份设置：" class="headerlink" title="备份设置："></a>备份设置：</h1><p>1、Gitlab 创建备份<br>1.1 创建备份文件<br>首先我们得把老服务器上的Gitlab整体备份，使用Gitlab一键安装包安装Gitlab非常简单, 同样的备份恢复与迁移也非常简单. 使用一条命令即可创建完整的Gitlab备份。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-rake gitlab:backup:create</span><br></pre></td></tr></table></figure></p>
+<p>1<br>使用以上命令会在/var/opt/gitlab/backups目录下创建一个名称类似为1502357536_2017_08_10_9.4.3_gitlab_backup.tar的压缩包, 这个压缩包就是Gitlab整个的完整部分, 其中开头的1502357536_2017_08_10_9.4.3是备份创建的日期<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/gitlab/gitlab.rb 配置文件须备份</span><br><span class="line">/var/opt/gitlab/nginx/conf nginx配置文件</span><br><span class="line">/etc/postfix/main.cfpostfix 邮件配置备份</span><br></pre></td></tr></table></figure></p>
+<p>生成完后，/var/opt/gitlab/backups目录创建一个名称类似为1502357536_2017_08_10_9.4.3_gitlab_backup.tar的压缩包</p>
+<p>1.1 更改Gitlab备份目录<br>当然你也可以通过/etc/gitlab/gitlab.rb配置文件来修改默认存放备份文件的目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[<span class="string">'backup_path'</span>] = <span class="string">"/var/opt/gitlab/backups"</span></span><br></pre></td></tr></table></figure></p>
+<p>/var/opt/gitlab/backups修改为你想存放备份的目录即可，例如下面代码将备份路径修改为/mnt/backups</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[<span class="string">'backup_path'</span>] = <span class="string">'/mnt/backups'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>修改完成之后使用下面命令重载配置文件即可.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure></p>
+<p>1.2 Gitlab自动备份<br>1.2.1 定时自动备份<br>在crontab文件里面，每一行代表一项任务，每行的每个字段代表一项设置，它的格式共分为六个字段，前五段是时间设定段，第六段是要执行的命令段，每个字段之间用空格分割，没用的段用*代替，格式如下：</p>
+<p>m h dom mon dow user command<br>1<br>其中：</p>
+<ul>
+<li>m： 表示分钟，可以是从0到59之间的任何整数。</li>
+<li>h：表示小时，可以是从0到23之间的任何整数。</li>
+<li>dom：表示日期，可以是从1到31之间的任何整数。</li>
+<li>mon：表示月份，可以是从1到12之间的任何整数。</li>
+<li>dow：表示星期几，可以是从0到7之间的任何整数，这里的0或- 7代表星期日。</li>
+<li>user : 表示执行的用户。</li>
+<li>command：要执行的命令，可以是系统命令，也可以是自己编写的脚本文件(如shell文件)。<br>实现每天凌晨2点进行一次自动备份:通过crontab使用备份命令实现，需重启cron服务<br>方法1、在命令行输入: crontab -e 然后添加相应的任务，wq存盘退出。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入命令crontab -e</span></span><br><span class="line">sudo crontab -e</span><br><span class="line"> </span><br><span class="line"><span class="comment">#输入相应的任务</span></span><br><span class="line">0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1  </span><br><span class="line">``` </span><br><span class="line">- 方法2、直接编辑/etc/crontab 文件，即vi /etc/crontab，然后添加相应的任务</span><br><span class="line">``` bash</span><br><span class="line"><span class="comment">#编辑 /etc/crontab</span></span><br><span class="line">vi /etc/crontab </span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">然后再编辑框内输入相应的任务</span><br><span class="line"></span><br><span class="line"><span class="comment"># edited by ouyang 2017-8-11 添加定时任务，每天凌晨两点，执行gitlab备份</span></span><br><span class="line">0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>原文：<a href="https://blog.csdn.net/ouyang_peng/article/details/77070977" target="_blank" rel="noopener">https://blog.csdn.net/ouyang_peng/article/details/77070977</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/28/gitlab-教程/" data-id="cjrh8thz2000000q46h3jzk7j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/17/vue/" class="article-date">
@@ -90,12 +148,12 @@
 <p>备注：<br>一般来讲，获取DOM元素，需document.querySelector（”.input1”）获取这个dom节点，然后在获取input1的值。</p>
 <p>但是用ref绑定之后，我们就不需要在获取dom节点了，直接在上面的input上绑定input1，然后$refs里面调用就行。</p>
 <p>然后在javascript里面这样调用：this.$refs.input1  这样就可以减少获取dom节点的消耗了</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ref</span>=<span class="string">"input1"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">    methods:&#123;</span></span><br><span class="line"><span class="javascript">    add:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.$refs.input1.value =<span class="string">"22"</span>; <span class="comment">//this.$refs.input1  减少获取dom节点的消耗</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ref</span>=<span class="string">"input1"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"add"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">new Vue(&#123;</span></span><br><span class="line"><span class="undefined">    el: "#app",</span></span><br><span class="line"><span class="undefined">    methods:&#123;</span></span><br><span class="line"><span class="undefined">    add:function()&#123;</span></span><br><span class="line"><span class="undefined">        this.$refs.input1.value ="22"; //this.$refs.input1  减少获取dom节点的消耗</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/vue/" data-id="cjr0e4zag0003fcq4gfdlolr3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/vue/" data-id="cjrh8thzq000700q4epszbiwu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/js-测试/" data-id="cjr0e4zaf0002fcq4ocmkn1gq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/js-测试/" data-id="cjrh8ti0l000800q4vp5223yk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,11 +267,14 @@
 <li>discourse</li>
 </ul>
 <p><a href="https://www.discourse.org/" target="_blank" rel="noopener">https://www.discourse.org/</a></p>
+<h1 id="前端资源网站"><a href="#前端资源网站" class="headerlink" title="前端资源网站"></a>前端资源网站</h1><ul>
+<li><a href="http://www.fly63.com/nav" target="_blank" rel="noopener">http://www.fly63.com/nav</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/收藏网站/" data-id="cjr0e4zai0004fcq4kbapevyg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/收藏网站/" data-id="cjrh8thzd000400q49i083vpx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/Linux/" data-id="cjr0e4zac0001fcq4z4oenixe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/Linux/" data-id="cjrh8thza000200q44azs4rpr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/gogs-git/" data-id="cjr0e4zaj0005fcq4hu8i8w4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/gogs-git/" data-id="cjrh8thz7000100q4jnmm3lsb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/Git-命令集/" data-id="cjr0e4za10000fcq478tlpckv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/16/Git-命令集/" data-id="cjrh8thze000500q4y2llpm0i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/hexo教程/" data-id="cjr0e4zak0006fcq4fhuwblr8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/hexo教程/" data-id="cjrh8thzb000300q4cv0jgnmi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -435,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/15/hello-world/" data-id="cjr0e4zam0007fcq4b3ahhgcg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/15/hello-world/" data-id="cjrh8thzp000600q4nqzr0755" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,6 +537,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/28/gitlab-教程/">gitlab 教程</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/17/vue/">vue</a>
           </li>
         
@@ -489,10 +554,6 @@
         
           <li>
             <a href="/2019/01/16/Linux/">Linux</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/16/gogs-git/">gogs git</a>
           </li>
         
       </ul>
