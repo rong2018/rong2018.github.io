@@ -7,17 +7,17 @@
   
   <title>Linux | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs">
+  <meta name="description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs tar压缩命令123#压缩文件名：backupData_20190128#压缩目录：backup tar -cvjpf backupData_20190128.tar.gz backup/ 123#解压：backupData_20190128.tar.gz#压缩目录：backup tar -xvf backupD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux">
 <meta property="og:url" content="http://yoursite.com/2019/01/16/Linux/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs">
+<meta property="og:description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs tar压缩命令123#压缩文件名：backupData_20190128#压缩目录：backup tar -cvjpf backupData_20190128.tar.gz backup/ 123#解压：backupData_20190128.tar.gz#压缩目录：backup tar -xvf backupD">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-16T04:09:59.430Z">
+<meta property="og:updated_time" content="2019-02-18T09:00:57.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux">
-<meta name="twitter:description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs">
+<meta name="twitter:description" content="当前路径pwd命令能够显示当前所处的路径。12$ pwd/home/git/gogs tar压缩命令123#压缩文件名：backupData_20190128#压缩目录：backup tar -cvjpf backupData_20190128.tar.gz backup/ 123#解压：backupData_20190128.tar.gz#压缩目录：backup tar -xvf backupD">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -87,6 +87,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="当前路径"><a href="#当前路径" class="headerlink" title="当前路径"></a>当前路径</h3><h5 id="pwd命令能够显示当前所处的路径。"><a href="#pwd命令能够显示当前所处的路径。" class="headerlink" title="pwd命令能够显示当前所处的路径。"></a>pwd命令能够显示当前所处的路径。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/home/git/gogs</span><br></pre></td></tr></table></figure>
+<h5 id="tar压缩命令"><a href="#tar压缩命令" class="headerlink" title="tar压缩命令"></a>tar压缩命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#压缩文件名：backupData_20190128</span></span><br><span class="line"><span class="comment">#压缩目录：backup</span></span><br><span class="line"> tar -cvjpf backupData_20190128.tar.gz backup/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压：backupData_20190128.tar.gz</span></span><br><span class="line"><span class="comment">#压缩目录：backup</span></span><br><span class="line"> tar -xvf backupData_20190128.tar.gz backup/</span><br></pre></td></tr></table></figure>
+<h5 id="rm-删除文件命令"><a href="#rm-删除文件命令" class="headerlink" title="rm 删除文件命令"></a>rm 删除文件命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm 文件名</span><br></pre></td></tr></table></figure>
+<p>service 服务名 stop/start/retart   –停止、开启、重启服务<br>网络服务–vi /etc/sysconfig/network-scripts/ifcfg-enp0s3<br>IPADDR=IP地址<br>NETMASK=子网掩码<br>GATEWAY=网关<br>DNS1=DNS地址<br>DNS2=DNS地址<br>systemctl restart network              –重启网络<br>–安装mysql      mariadb代替mysql<br>yum -y install mysql        –安装<br>systemctl start mariadb     –启动   stop\restart\enable<br>–安装php<br>yum -y install php        –安装<br>–安装apache<br>–yum -y install httpd        –安装<br>–systemctl start httpd     –启动<br>–防火墙firewall<br>systemctl stop firewalld    –停用<br>–命令行WEB浏览器<br>yum install links<br>–ftp服务<br>systemctl start vsftpd        –启用<br>–SeLinux 系统规则<br>setenforce 0               –关闭<br>setenforce 1 设置SELinux 成为enforcing模式<br>setenforce 0 设置SELinux 成为permissive模式<br>/usr/bin/sestatus -v       –察看系统的状态<br>–mysqladmin -u root -p password 新密码<br>执行后提示输入旧密码完成密码修改, 当旧密码为空时直接按回车键确认即可<br>–mysql -u root -phfcc123**    登录账号密码<br>–yum install php-devel     php扩展<br>–yum install php-pear<br>–yum install gcc</p>
+<p>–wheseis php       –查找文件安装目录<br>–which php         –查找运行文件路径</p>
+<p>–mv                –文件重命名</p>
+<p>2、把/home目录下面的mydata.zip解压到mydatabak目录里面<br>unzip mydata.zip -d mydatabak<br>tar zxf abc.tar.gz -C<br>3、权限设置<br>–chmod</p>
+<p>mysql<br>解决方法：<br>1、手动删掉自己创建的data文件夹<br>2、然后再管理员cmd下进入 bin 目录，移除自己的mysqld服务</p>
+<p>D:\Program Files\MySQL\bin&gt;mysqld -remove MySQL<br>Service successfully removed.<br>1<br>2<br>3、在cmd的bin目录执行 mysqld –initialize-insecure<br>程序会在动MySQL文件夹下创建data文件夹以及对应的文件<br>4、bin目录下执行，mysqld –install ，安装mysqld服务<br>5、在bin目录下运行net start mysql ,启动mysql服务。</p>
 
       
     </div>
